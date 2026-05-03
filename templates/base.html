@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDo | Lux</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/lux/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .sidebar { min-height: 100vh; border-right: 1px solid #dee2e6; background: #fff; }
+        .nav-link { color: #000; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-link:hover { color: #555; }
+        .card { border-radius: 0; border: 2px solid #000; }
+        .btn { border-radius: 0; text-transform: uppercase; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block sidebar p-4">
+                <h4 class="mb-4 text-uppercase fw-bold">Menu</h4>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a class="nav-link p-0" href="{% url 'todo:index' %}">Home</a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a class="nav-link p-0" href="{% url 'todo:tags-list' %}">Tags</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <main class="col-md-10 ms-sm-auto px-md-5 py-4">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+</body>
+</html>
