@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Tags
+  </h1>
+  <a href="{% url 'todo:tags-create' %}" class="btn btn-primary link-to-page">
+    Create
+  </a>
+  <table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Update</th>
+      <th>Delete</th>
+    </tr>
+    {% for tag in tags %}
+      <tr>
+        <th>{{ tag.name }}</th>
+        <th><a href="{% url 'todo:tags-update' tag.pk %}">Update</a></th>
+        <th><a href="{% url 'todo:tags-delete' tag.pk %}">Delete</a></th>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
