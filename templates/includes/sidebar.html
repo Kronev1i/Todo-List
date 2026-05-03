@@ -1,0 +1,8 @@
+<div class="sidebar">
+    <a href="{% url 'todo:index' %}">Home</a>
+    <a href="{% url 'todo:tag-list' %}">Tags</a>
+</div>
+
+<div class="content">
+    {% block content %}{% endblock %}
+</div>
