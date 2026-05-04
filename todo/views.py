@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 
-from .forms import TaskForm
-from .models import Task, Tag
+from todo.forms import TaskForm
+from todo.models import Task, Tag
 
 
 class IndexView(generic.ListView):
@@ -58,8 +58,9 @@ class TagDeleteView(generic.DeleteView):
     success_url = reverse_lazy("todo:tags-list")
 
 
-def toggle_task_status(request, pk):
-    task = get_object_or_404(Task, id=pk)
-    task.done_or_not = not task.done_or_not
-    task.save()
-    return redirect("todo:index")
+class ToggleTaskStatusView(View):
+    def post(self, request, pk):
+        task = get_object_or_404(Task, id=pk)
+        task.done_or_not = not task.done_or_not
+        task.save()
+        return redirect("todo:index")
