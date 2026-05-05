@@ -8,7 +8,6 @@ from todo.views import (
     TagCreateView,
     TagUpdateView,
     TagDeleteView,
-    toggle_task_status
 )
 
 urlpatterns = [
